@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "revenues",
+  "info": {
+    "singularName": "revenue",
+    "pluralName": "revenues",
+    "displayName": "Revenue",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "revenues"
+    },
+    "quantity": {
+      "type": "integer"
+    },
+    "totalAmount": {
+      "type": "biginteger"
+    },
+    "order": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::order.order",
+      "inversedBy": "revenue"
+    },
+    "transactionStatus": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "completed"
+      ]
+    }
+  }
+}

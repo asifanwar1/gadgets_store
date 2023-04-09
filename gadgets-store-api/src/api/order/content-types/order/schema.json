@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "paid",
+        "unpaid"
+      ]
+    },
+    "total": {
+      "type": "decimal"
+    },
+    "checkout_session": {
+      "type": "string"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "orders"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "orders"
+    },
+    "address": {
+      "type": "text"
+    },
+    "orderNotes": {
+      "type": "text"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "integer"
+    },
+    "revenue": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::revenue.revenue",
+      "mappedBy": "order"
+    }
+  }
+}
